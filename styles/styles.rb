@@ -14,4 +14,9 @@ module Styles
   def self.title(text)
     puts SIDE + text.center(CW-1) + SIDE
   end
+
+  def self.footer
+    puts SEPARATION
+    puts MENU_TOP
+  end
 end

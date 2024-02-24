@@ -31,4 +31,10 @@ module Styles
   def self.line(text)
     puts SIDE + text.ljust(CW-1) + SIDE
   end
+
+  def self.options(input)
+    input.each_with_index do |option, index|
+      puts SIDE + " #{index + 1} -> " + option.ljust(CW-7) + SIDE
+    end
+  end
 end

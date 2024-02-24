@@ -1,6 +1,6 @@
 require_relative "../styles/styles.rb"
 require_relative "../challenges/hello-world/hello-world-ui.rb"
-require_relative "../challenges/hello-world-ui.rb"
+require_relative "../challenges/lasagna/lasagna_ui.rb"
 class Menus
   include Styles
 
@@ -24,7 +24,9 @@ class Menus
       menu_1
     when "2"
       Styles.clear
-      puts "here comes lasagna app"
+      lasagna = LasagnaUi.new
+      lasagna.lasagna_menu
+      menu_1
     end
   end
 end

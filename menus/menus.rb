@@ -1,6 +1,6 @@
 require_relative "../styles/styles.rb"
 require_relative "../challenges/hello-world/hello-world-ui.rb"
-
+require_relative "../challenges/hello-world-ui.rb"
 class Menus
   include Styles
 

@@ -10,4 +10,8 @@ module Styles
     puts MENU_TOP
     puts SEPARATION
   end
+  
+  def self.title(text)
+    puts SIDE + text.center(CW-1) + SIDE
+  end
 end

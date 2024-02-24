@@ -39,6 +39,6 @@ module Styles
   end
 
   def self.clear
-    sytem("clear")
+    system("clear")
   end
 end

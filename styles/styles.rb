@@ -37,4 +37,8 @@ module Styles
       puts SIDE + " #{index + 1} -> " + option.ljust(CW-7) + SIDE
     end
   end
+
+  def self.clear
+    system("clear")
+  end
 end

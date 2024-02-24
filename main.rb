@@ -1,23 +1,15 @@
 require_relative "menus/menus.rb"
+
 class App
-  
+
   def display
-    system("clear")
+    
+    clear
     menu = Menus.new
-    puts "WELCOME"
-    stop = gets.chomp.to_i
-    if stop.eql?(1)
-      clear
-      menu.menu_1
-      back = gets
-      display
-    elsif stop.eql?(2)
-      clear
-      puts "Good bye"
-    else
-      display
-    end
+    menu.menu_1
+    usr_option = gets.chop.downcase
   end
+
   def clear
     system("clear")
   end

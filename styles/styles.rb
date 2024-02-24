@@ -6,4 +6,8 @@ module Styles
   CW = MENU_TOP.length 
   SEPARATION = SIDE + " "*(MENU_TOP.length-1) + SIDE
 
+  def self.header
+    puts MENU_TOP
+    puts SEPARATION
+  end
 end

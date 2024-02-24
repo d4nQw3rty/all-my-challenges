@@ -7,6 +7,10 @@ class Menus
   end
   attr_reader :options_menu_1
   def menu_1
-    Styles.options(options_menu_1)  
+    Styles.header
+    Styles.options(options_menu_1) 
+    Styles.ltext(" 0 -> Exit")
+    Styles.ltext(" N -> Next Menu")
+    Styles.footer
   end
 end

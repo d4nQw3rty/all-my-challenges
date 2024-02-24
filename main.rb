@@ -4,18 +4,27 @@ class App
 
   def display
     
-    system("clear")
+    clear
     menu = Menus.new
-    puts "WELCOME"
-    stop = gets.chomp.to_i
-    if stop.eql?(1)
+    menu.menu_1
+    usr_option = gets.chop.downcase
+    case usr_option
+    when "1"
       clear
-      menu.menu_1
+      puts "here is Hello World UI"
       back = gets
       display
-    elsif stop.eql?(2)
+    when "2"
       clear
+      puts "Here lasagna UI"
+      back = gets
+      display
+    when "0"
       puts "Good bye"
+    when "n", "N"
+      puts "here next menu"
+      back = gets
+      display
     else
       display
     end

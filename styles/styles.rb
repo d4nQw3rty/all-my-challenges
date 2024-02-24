@@ -19,4 +19,8 @@ module Styles
     puts SEPARATION
     puts MENU_TOP
   end
+  
+  def self.ltext(text)
+    puts SIDE + text.ljust(CW-1) + SIDE
+  end
 end

@@ -14,11 +14,12 @@ class HelloWorldUi
     Styles.header
     Styles.title("This will print 'Hello, World!' in the screen")
     Styles.title("Press a key to continue ->")
-    Styles.separation
+    Styles.footer
     hit_enter = gets
     Styles.header
     Styles.title("#{HelloWorld.hello}")
-    Styles.separation
+    Styles.footer
+    hit_enter = gets
     puts "Press a key to return"
   end
 end

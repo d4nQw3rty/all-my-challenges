@@ -1,4 +1,6 @@
 require_relative "../styles/styles.rb"
+require_relative "../challenges/hello-world/hello-world-ui.rb"
+
 class Menus
   include Styles
 
@@ -13,13 +15,16 @@ class Menus
     Styles.ltext(" 0 -> Exit")
     Styles.ltext(" N -> Next Menu")
     Styles.footer
-    select = gets
-    if select.eql?("1")
+    select = gets.chop.downcase
+    case select
+    when "1"
       Styles.clear
-      puts "Here comes the hello app"
-    else
-      Styles.clear
+      message = HelloWorldUi.new
+      message.hello_ui
       menu_1
+    when "2"
+      Styles.clear
+      puts "here comes lasagna app"
     end
   end
 end

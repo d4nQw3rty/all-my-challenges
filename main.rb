@@ -1,7 +1,9 @@
 require_relative "menus/menus.rb"
+
 class App
-  
+
   def display
+    
     system("clear")
     menu = Menus.new
     puts "WELCOME"
@@ -18,6 +20,7 @@ class App
       display
     end
   end
+
   def clear
     system("clear")
   end

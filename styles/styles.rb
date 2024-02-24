@@ -23,6 +23,10 @@ module Styles
   def self.ltext(text)
     puts SIDE + text.ljust(CW-1) + SIDE
   end
+  
+  def self.rtext(text)
+    puts SIDE + text.rjust(CW-1) + SIDE
+  end
 
   def self.line(text)
     puts SIDE + text.ljust(CW-1) + SIDE

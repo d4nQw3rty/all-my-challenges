@@ -23,6 +23,7 @@ class LasagnaUi < Lasagna
     system("clear")
     Styles.header
     Styles.title("Lest Prepare Lasagna!")
+    Styles.footer  
     Styles.title( "OPTIONS")
     Styles.options(OPTIONS)   
     Styles.footer

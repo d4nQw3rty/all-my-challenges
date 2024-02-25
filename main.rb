@@ -7,7 +7,6 @@ class App
     clear
     menu = Menus.new
     menu.menu_1
-    usr_option = gets.chop.downcase
   end
 
   def clear

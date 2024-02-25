@@ -1,6 +1,7 @@
 require_relative "../styles/styles.rb"
 require_relative "../challenges/hello-world/hello-world-ui.rb"
 require_relative "../challenges/lasagna/lasagna_ui.rb"
+require_relative "" 
 class Menus
   include Styles
 
@@ -9,8 +10,8 @@ class Menus
   end
   attr_reader :options_menu_1
   def menu_1
-    Styles.clear
     Styles.header
+    Styles.clear
     Styles.options(options_menu_1) 
     Styles.ltext(" 0 -> Exit")
     Styles.ltext(" N -> Next Menu")
@@ -26,6 +27,10 @@ class Menus
       Styles.clear
       lasagna = LasagnaUi.new
       lasagna.lasagna_menu
+      menu_1
+    when "3"
+      Styles.clear
+      puts "Insert Museum GUI"
       menu_1
     end
   end

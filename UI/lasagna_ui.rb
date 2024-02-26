@@ -1,5 +1,5 @@
-require_relative '../../styles/styles.rb'
-require_relative 'lasagna.rb'
+require_relative '../styles/styles.rb'
+require_relative '../challenges/lasagna/lasagna.rb'
 
 class LasagnaUi < Lasagna 
  

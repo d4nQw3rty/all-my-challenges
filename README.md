@@ -83,7 +83,7 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[Front-end Repository](https://github.com/OscarFMdev/Marriott-Reservation-Frontend)
+[Repository](git@github.com:d4nQw3rty/all-my-challenges.git)
 
 <!-- GETTING STARTED -->
 

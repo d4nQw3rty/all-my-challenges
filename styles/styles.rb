@@ -32,6 +32,14 @@ module Styles
     puts SIDE + text.ljust(CW-1) + SIDE
   end
 
+  def self.htitle(*texts)
+    header
+    texts.map do |text|
+    title(text)
+    end
+    footer
+  end
+
   def self.options(input)
     input.each_with_index do |option, index|
       puts SIDE + " #{index + 1} -> " + option.ljust(CW-7) + SIDE

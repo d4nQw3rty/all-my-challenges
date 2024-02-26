@@ -82,8 +82,6 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[Repository](git@github.com:d4nQw3rty/all-my-challenges.git)
-
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>

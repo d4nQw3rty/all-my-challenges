@@ -11,14 +11,9 @@ class HelloWorldUi
   attr_reader :str
 
   def hello_ui
-    Styles.header
-    Styles.title("This will print 'Hello, World!' in the screen")
-    Styles.title("Press a key to continue ->")
-    Styles.footer
+    Styles.htitle("This will print 'Hello, World!' in the screen","Press a key to continue ->")
     hit_enter = gets
-    Styles.header
-    Styles.title("#{HelloWorld.hello}")
-    Styles.footer
+    Styles.htitle("#{HelloWorld.hello}")
     hit_enter = gets
     puts "Press a key to return"
   end

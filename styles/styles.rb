@@ -21,15 +21,23 @@ module Styles
   end
   
   def self.ltext(text)
-    puts SIDE + text.ljust(CW-1) + SIDE
+    puts SIDE + " " + text.ljust(CW-2) + SIDE
   end
   
   def self.rtext(text)
     puts SIDE + text.rjust(CW-1) + SIDE
   end
 
-  def self.line(text)
-    puts SIDE + text.ljust(CW-1) + SIDE
+  def self.line
+    puts SIDE + " ".ljust(CW-1) + SIDE
+  end
+
+  def self.htitle(*texts)
+    header
+    texts.map do |text|
+    title(text)
+    end
+    footer
   end
 
   def self.options(input)

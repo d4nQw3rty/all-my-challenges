@@ -1,4 +1,3 @@
-#me="readme-top"></a>
 <div align="center">
 
   <br/>
@@ -15,7 +14,6 @@
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
   - [🚀 Live Demo ](#-live-demo-)
-  - [Before Implementing the Project](#before-implementing-the-project)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -47,27 +45,20 @@
 </details>
 
 <details>
-  <summary>Backend</summary>
-  <ul>
-    <li>None</a></li>
-  </ul>
-</details>
-
-<details>
-  <summary>Frontend</summary>
+  <summary>Language</summary>
   <ul>
     <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
   </ul>
 </details>
 
 <details>
-<summary>Database</summary>
-  <ul>
-    <li><a href=""</a>None</li>
-  </ul>
-</details>
-
+  <summary>Database</summary>
+   <ul>
+     <li>None</li>
+   </ul>
+  </details>
 <details>
+
 <summary>Testing</summary>
   <ul>
     <li><a href="https://rubygems.org/gems/minitest/versions/5.22.2?locale=en">Mini test</a></li>
@@ -89,8 +80,6 @@
 - [No-Live-Demo]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-[Front-end Repository](https://github.com/OscarFMdev/Marriott-Reservation-Frontend)
 
 <!-- GETTING STARTED -->
 

@@ -6,7 +6,7 @@ class AmusementParkUi
 
   OPTIONS = {
     amp: ["Create Attendee", "Go back"],
-    attendee: ["Height", "Pass ID", "Issue Pass", "Revoke Pass"]
+    attendee: ["Height", "Pass ID", "Issue Pass", "Revoke Pass","Go back"]
   }
 
   def amusement_menu
@@ -44,18 +44,16 @@ class AmusementParkUi
     attendee_menu_header
     check_option = gets.chomp.downcase
     case check_option
-    when "0"
-      puts "bye"
+    when "5"
+      Styles.clear
+      amusement_menu
     when "1"
       attendee_menu_header
-      Styles.line
-      Styles.ltext("Attendee's Height is: #{attendee.height}")
-      Styles.footer
+      attendee_message("Attendee's Height is: #{attendee.height}")
       check_options = gets
       attendee_menu(attendee)
     when "2"
       attendee_menu_header
-      Styles.line
       if attendee.pass_id.nil?
         attendee_message("Pass ID: nil ") 
       else
@@ -65,34 +63,31 @@ class AmusementParkUi
       attendee_menu(attendee)
     when "3"
       attendee_menu_header
-      Styles.line
       if attendee.pass_id.nil?
         attendee.issue_pass!(rand(1..1000))
         attendee_message("Now you have a pass ID: #{attendee.pass_id}") 
-        check_option = gets
       else
         attendee_message("You already have a Pass ID: #{attendee.pass_id}")
-        check_option = gets
       end
+      check_option = gets
       attendee_menu(attendee)
     when "4"
       attendee_menu_header
       if attendee.pass_id.nil?
-        puts "no"
-      check_option = gets
-      attendee_menu(attendee)
+        attendee_message("You don't have a pass!") 
       else
-        puts "yesp"
-      check_option = gets
-      attendee_menu(attendee)
+        attendee.revoke_pass!
+        attendee_message("Yous pass was revoked!") 
       end
-      attendee_menu(attendee)
+        check_option = gets
+        attendee_menu(attendee)
     else
+      attendee_menu(attendee)
     end
   end
 
   def  attendee_menu_header
-     Styles.clear
+    Styles.clear
     amp_header
     Styles.title("OPTIONS")
     Styles.options(OPTIONS[:attendee])
@@ -100,6 +95,7 @@ class AmusementParkUi
   end
   
   def attendee_message(message)
+    Styles.line
     Styles.ltext(message)
     Styles.footer
   end

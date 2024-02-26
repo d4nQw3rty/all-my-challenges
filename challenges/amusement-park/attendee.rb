@@ -1,4 +1,5 @@
 class Attendee
+  attr_reader :attendee_heigth, :pass_id
   def height
     @attendee_height
   end
@@ -18,6 +19,6 @@ class Attendee
   private
   def initialize(height)
     @attendee_height = height
-    @pass_id = nil
+    @pass_id = nil 
   end  
 end

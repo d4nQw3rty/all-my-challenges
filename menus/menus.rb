@@ -1,7 +1,7 @@
 require_relative "../styles/styles.rb"
-require_relative "../challenges/hello-world/hello-world-ui.rb"
 require_relative "../challenges/lasagna/lasagna_ui.rb"
 require_relative "../UI/amusement_park_ui.rb" 
+require_relative "../UI/hello-world-ui.rb"
 class Menus
   include Styles
 
@@ -14,11 +14,11 @@ class Menus
     Styles.header
     Styles.title("All My Challenges")
     Styles.footer
-    Styles.header
-    Styles.title("OPTIONS")
+    Styles.title("Options")
+    Styles.line
     Styles.options(options_menu_1) 
-    Styles.ltext(" 0 -> Exit")
-    Styles.ltext(" N -> Next Menu")
+    Styles.ltext("0 -> Exit")
+    Styles.ltext("N -> Next Menu")
     Styles.footer
     select = gets.chop.downcase
     case select

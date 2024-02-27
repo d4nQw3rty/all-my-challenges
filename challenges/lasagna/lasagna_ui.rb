@@ -20,13 +20,7 @@ class LasagnaUi < Lasagna
   attr_reader :time_in_oven, :layer
 
   def lasagna_menu 
-    system("clear")
-    Styles.header
-    Styles.title("Lest Prepare Lasagna!")
-    Styles.footer  
-    Styles.title( "OPTIONS")
-    Styles.options(OPTIONS)   
-    Styles.footer
+    lasagna_header
     select = gets.chop.downcase
     if select == "1"
       remaining
@@ -39,32 +33,36 @@ class LasagnaUi < Lasagna
     else
       lasagna_menu
     end
+  end
 
+  def lasagna_header
+    Styles.clear   
+    Styles.header
+    Styles.title("Lasagna")
+    Styles.footer  
+    Styles.title( "Options")
+    Styles.line
+    Styles.options(OPTIONS)   
+    Styles.footer
   end
 
   def remaining
-    Styles.clear
-    Styles.header
-    Styles.title("How long the Lasagna has been in the oven?")
-    Styles.footer
-    time_in_oven = gets.chop.to_i
-    if time_in_oven.negative? 
-      Styles.header
-      Styles.title("Put it in the oven!")
-    Styles.footer
-        
+    lasagna_header
+    Styles.htitle("How long the Lasagna has been in the oven?")
+    time_in_oven = gets.chomp.to_i
+    if time_in_oven.negative? || time_in_oven == 0
+      lasagna_header
+      Styles.htitle("It is not a valid time!")
       back = gets
       lasagna_menu
     elsif time_in_oven <= 40 && time_in_oven.positive?
-      Styles.header
-      Styles.title("You have to wait #{remaining_minutes_in_oven(time_in_oven)} minutes")
-    Styles.footer
+      lasagna_header
+      Styles.htitle("You have to wait #{remaining_minutes_in_oven(time_in_oven)} minutes")
       back = gets
       lasagna_menu
     else
-      Styles.header
-      Styles.title("TAKE IT OUT OF THE OVEN!")
-    Styles.footer
+      lasagna_header
+      Styles.htitle("TAKE IT OUT OF THE OVEN!")
       back = gets
       lasagna_menu
     end

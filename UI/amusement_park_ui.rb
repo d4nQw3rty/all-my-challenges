@@ -9,7 +9,7 @@ class AmusementParkUi
     attendee: ["Height", "Pass ID", "Issue Pass", "Revoke Pass","Go back"]
   }
 
-  def amusement_menu
+  def amusementpark
     amp_header
     Styles.title("OPTIONS")
     Styles.options(OPTIONS[:amp])
@@ -22,7 +22,7 @@ class AmusementParkUi
       puts "You Exit"
     else
       Styles.clear
-      amusement_menu
+      amusementpark
     end
   end
 
@@ -46,7 +46,7 @@ class AmusementParkUi
     case check_option
     when "5"
       Styles.clear
-      amusement_menu
+      amusementpark
     when "1"
       attendee_menu_header
       attendee_message("Attendee's Height is: #{attendee.height}")

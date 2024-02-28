@@ -11,7 +11,7 @@ class HelloWorldUi
 
   attr_reader :str
 
-  def hello_ui
+  def helloworld_menu
     hello_header
     options = gets.chomp.downcase
     case options
@@ -21,9 +21,9 @@ class HelloWorldUi
       hello_header
       Styles.htitle("#{HelloWorld.hello}")
       options = gets.chomp.downcase
-      hello_ui
+      helloworld_menu
     else
-      hello_ui
+      helloworld_menu
     end
   end
 

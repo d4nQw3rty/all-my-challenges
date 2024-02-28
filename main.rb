@@ -4,7 +4,7 @@ class App
   def display
     clear
     menu = Menus.new
-    menu.menu_1
+    menu.menu1
   end
 
   def clear

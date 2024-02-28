@@ -1,5 +1,5 @@
 require_relative '../styles/styles'
-require_relative '../challenges/lasagna/lasagna_ui'
+require_relative '../UI/lasagna_ui'
 require_relative '../UI/amusement_park_ui'
 require_relative '../UI/hello-world-ui'
 # class Menus
@@ -10,8 +10,7 @@ class Menus
     @options_menu1 = [
       'Hello World',
       'Lasagna',
-      'Amusement Park',
-      'Exit'
+      'Amusement Park'
     ]
   end
   attr_reader :options_menu1

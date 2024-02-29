@@ -16,17 +16,6 @@ class HelloWorldUi
     hello_header
     option = gets.chomp.downcase
     hello_world_case_constructor(option)
-=begin
-    case options
-
-    when '2'
-      puts 'bye'
-    when '1'
-      hello_header
-    else
-      helloworld_menu
-    end
-=end
   end
 
   def hello_header
@@ -40,10 +29,12 @@ class HelloWorldUi
 
   def hello_world_case_constructor(input)
     case input
-    when '0'
+    when '2'
       puts 'bye'
     when '1'
       message
+      option = gets
+      helloworld_menu if option
     else
       helloworld_menu
     end
@@ -51,6 +42,6 @@ class HelloWorldUi
 
   def message
     hello_header
-    Styles.htitle("#{HelloWorld.hello}")
+    Styles.htitle(HelloWorld.hello)
   end
 end

@@ -1,9 +1,13 @@
 # class Lasagna
 class Lasagna
-  EXPECTED_MINUTES_IN_OVEN = 40
+  def initialize
+    @expected_minutes_in_oven = 40
+  end
+
+  attr_reader :expected_minutes_in_oven
 
   def remaining_minutes_in_oven(actual_minutes_in_oven)
-    EXPECTED_MINUTES_IN_OVEN - actual_minutes_in_oven
+    expected_minutes_in_oven - actual_minutes_in_oven
   end
 
   def preparation_time_in_minutes(layers)

@@ -5,7 +5,7 @@ class AmusementParkUi
   include Styles
 
   OPTIONS = {
-    amp: ["Create Attendee", "Go back"],
+    amp: ["Create Attendee", "Main Menu"],
     attendee: ["Height", "Pass ID", "Issue Pass", "Revoke Pass","Go back"]
   }
 

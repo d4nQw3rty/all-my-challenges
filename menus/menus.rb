@@ -1,3 +1,4 @@
+
 require_relative '../styles/styles'
 require_relative '../UI/lasagna_ui'
 require_relative '../UI/amusement_park_ui'
@@ -31,6 +32,7 @@ class Menus
     Styles.options(options_menu1)
     Styles.ltext('0 -> Exit')
     Styles.ltext('N -> Next Menu')
+
     Styles.footer
   end
 

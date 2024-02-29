@@ -1,5 +1,5 @@
-require_relative "hello_world.rb"
-require_relative "../../styles/styles.rb"
+require_relative "../challenges/hello-world/hello_world.rb"
+require_relative "../styles/styles.rb"
 
 class HelloWorldUi
   include Styles

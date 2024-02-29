@@ -17,7 +17,7 @@ class Menus
 
   def menu1
     menu1_header
-    select = gets.chop.downcase
+    select = gets.chomp.downcase
     case_construct(select)
   end
 

@@ -1,10 +1,11 @@
-require_relative "../challenges/hello-world/hello_world.rb"
-require_relative "../styles/styles.rb"
+require_relative '../challenges/hello-world/hello_world'
+require_relative '../styles/styles'
 
+# class HelloWorldUi
 class HelloWorldUi
   include Styles
-      
-  OPTIONS = ["Print 'Hello, World!'","Main menu" ]
+
+  OPTIONS = ["Print 'Hello, World!'", 'Main menu']
   def initialize
     @str = HelloWorld.hello
   end
@@ -13,26 +14,43 @@ class HelloWorldUi
 
   def helloworld_menu
     hello_header
-    options = gets.chomp.downcase
+    option = gets.chomp.downcase
+    hello_world_case_constructor(option)
+=begin
     case options
-    when "2"
-      puts "bye"
-    when "1"
+
+    when '2'
+      puts 'bye'
+    when '1'
       hello_header
-      Styles.htitle("#{HelloWorld.hello}")
-      options = gets.chomp.downcase
+    else
       helloworld_menu
+    end
+=end
+  end
+
+  def hello_header
+    Styles.clear
+    Styles.htitle('Hello, World!')
+    Styles.title('Options')
+    Styles.line
+    Styles.options(OPTIONS)
+    Styles.footer
+  end
+
+  def hello_world_case_constructor(input)
+    case input
+    when '0'
+      puts 'bye'
+    when '1'
+      message
     else
       helloworld_menu
     end
   end
 
-  def hello_header
-    Styles.clear
-    Styles.htitle("Hello, World!")
-    Styles.title("Options")
-    Styles.line
-    Styles.options(OPTIONS)
-    Styles.footer
+  def message
+    hello_header
+    Styles.htitle("#{HelloWorld.hello}")
   end
 end

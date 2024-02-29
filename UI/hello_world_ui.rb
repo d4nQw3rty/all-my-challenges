@@ -42,6 +42,6 @@ class HelloWorldUi
 
   def message
     hello_header
-    Styles.htitle(HelloWorld.hello)
+    Styles.htitle(str)
   end
 end

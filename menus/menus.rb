@@ -1,4 +1,3 @@
-
 require_relative '../styles/styles'
 require_relative '../UI/lasagna_ui'
 require_relative '../UI/amusement_park_ui'

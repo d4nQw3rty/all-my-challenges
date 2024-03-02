@@ -1,8 +1,10 @@
 require_relative '../challenges/lasagna/lasagna'
+require_relative '../modules/lasagna_module'
 require_relative '../styles/styles'
 # class Lasagna
 class LasagnaUi < Lasagna
   include Styles
+  include LasagnaModule
 
   OPTIONS = [
     'Remaining minutes in oven',
@@ -11,16 +13,15 @@ class LasagnaUi < Lasagna
   ]
 
   def lasagna_menu
-    lasagna_menu_header
+    LasagnaModule.lasagna_menu_header(OPTIONS)
     select = gets.chomp
     method_constructor(OPTIONS, select)
   end
 
   def method_constructor(options_array, select)
-    case select
-    when '0'
+    if select == '0'
       puts ''
-    when '1', '2', '3'
+    elsif %w[1 2 3].include?(select)
       option = options_array[select.to_i - 1].split(' ').first.downcase
       send option
     else
@@ -29,38 +30,25 @@ class LasagnaUi < Lasagna
   end
 
   def remaining
-    lasagna_menu_header
+    LasagnaModule.lasagna_menu_header(OPTIONS)
     Styles.htitle('How long the Lasagna has been in the oven?')
     time_in_oven = gets.chomp.to_i
-    if time_in_oven.negative? || time_in_oven.eql?(0)
-      message('It is not a valid time!')
-    elsif time_in_oven <= 40 && time_in_oven.positive?
-      message("You have to wait #{remaining_minutes_in_oven(time_in_oven)} minutes")
+    remaining_calculator(time_in_oven)
+    go_back
+  end
+
+  def remaining_calculator(time)
+    if time.negative? || time.eql?(0)
+      LasagnaModule.message('It is not a valid time!', OPTIONS)
+    elsif time <= 40
+      LasagnaModule.message("You have to wait #{remaining_minutes_in_oven(time)} minutes", OPTIONS)
     else
-      message('TAKE IT OUT OF THE OVEN!')
+      LasagnaModule.message('TAKE IT OUT OF THE OVEN!', OPTIONS)
     end
   end
 
-  def message(text)
-    lasagna_menu_header
-    Styles.htitle(text)
-    back = gets
-    lasagna_menu if back
-  end
-
-  def lasagna_menu_header
-    Styles.clear
-    Styles.htitle('Lasagna')
-    Styles.title('Options')
-    Styles.line
-    Styles.options(OPTIONS)
-    Styles.ltext('0 -> Main menu')
-    Styles.footer
-  end
-
   def preparation
-    Styles.clear
-    lasagna_menu_header
+    LasagnaModule.lasagna_menu_header(OPTIONS)
     Styles.htitle('Enter number of layers')
     layers = gets.chop.to_i
     preparation_calculator(layers)
@@ -68,29 +56,35 @@ class LasagnaUi < Lasagna
 
   def preparation_calculator(layers)
     if layers.positive?
-      message("The preparation time is #{preparation_time_in_minutes(layers)} minutes")
+      LasagnaModule.message("The preparation time is #{preparation_time_in_minutes(layers)} minutes", OPTIONS)
     else
-      message('Enter a valid value')
+      LasagnaModule.message('Enter a valid value', OPTIONS)
     end
+    go_back
   end
 
   def total
-    Styles.clear
-    lasagna_menu_header
+    LasagnaModule.lasagna_menu_header(OPTIONS)
     Styles.htitle('Enter lasagna quantity of layers')
     layers = gets.chomp.to_i
     time_in_oven(layers)
   end
 
   def time_in_oven(layers)
-    Styles.clear
-    lasagna_menu_header
+    LasagnaModule.lasagna_menu_header(OPTIONS)
     Styles.htitle('Enter lasagna time in oven')
     time = gets.chomp.to_i
     if layers.between?(1, 20) && time.between?(1, 40)
-      message("Cooking time: #{total_time_in_minutes(number_of_layers: layers, actual_minutes_in_oven: time)} minutes")
+      total_time = total_time_in_minutes(number_of_layers: layers, actual_minutes_in_oven: time)
+      LasagnaModule.message("Cooking time: #{total_time} minutes", OPTIONS)
     else
-      message('Some values are invalid')
+      LasagnaModule.message('Some values are invalid', OPTIONS)
     end
+    go_back
+  end
+
+  def go_back
+    back = gets
+    lasagna_menu if back
   end
 end

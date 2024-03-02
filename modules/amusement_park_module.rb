@@ -1,4 +1,3 @@
-require_relative '../styles/styles'
 # module AmusementParkModule
 module ApModule
   def self.amp_header(options)

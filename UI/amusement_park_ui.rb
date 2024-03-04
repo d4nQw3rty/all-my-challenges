@@ -42,7 +42,7 @@ class AmusementParkUi
     ApModule.attendee_menu_header(OPTIONS[:attendee])
     select = gets.chomp.downcase
     if %w[1 2].include?(select)
-      method_constructor(attendee, select)
+      height_and_pass_id(attendee, select)
     elsif %w[0 3 4].include?(select)
       issue_and_revoke(select, attendee)
     else
@@ -50,11 +50,23 @@ class AmusementParkUi
     end
   end
 
-  def method_constructor(attendee, select)
-    ApModule.attendee_menu_header(OPTIONS[:attendee])
-    opt = OPTIONS[:attendee][select.to_i - 1]
-    ApModule.attendee_message("Attendee's #{opt} #{attendee.send opt.downcase.gsub(' ', '_')}")
+  def height_and_pass_id(attendee, select)
+    if select == '1'
+      ApModule.attendee_menu_header(OPTIONS[:attendee])
+      ApModule.attendee_message("Attendee's height: #{attendee.height}")
+    else
+      pass_id_report(attendee)
+    end
     attendee_back(attendee)
+  end
+
+  def pass_id_report(attendee)
+    ApModule.attendee_menu_header(OPTIONS[:attendee])
+    if attendee.pass_id
+      ApModule.attendee_message("Attendee's Pass ID: #{attendee.pass_id}")
+    else
+      ApModule.attendee_message("You don't have a Pass Id")
+    end
   end
 
   def issue_and_revoke(select, attendee)
@@ -69,20 +81,20 @@ class AmusementParkUi
   end
 
   def issue(attendee)
-    if attendee.pass_id.nil?
-      ApModule.attendee_message("Now you have a pass ID: #{attendee.issue_pass!(rand(1..1000))}")
-    else
+    if attendee.pass_id
       ApModule.attendee_message("You already have a Pass ID: #{attendee.pass_id}")
+    else
+      ApModule.attendee_message("Now you have a pass ID: #{attendee.issue_pass!(rand(1..1000))}")
     end
     attendee_back(attendee)
   end
 
   def revoke(attendee)
-    if attendee.pass_id.nil?
-      ApModule.attendee_message("You don't have a pass!")
-    else
+    if attendee.pass_id
       attendee.revoke_pass!
       ApModule.attendee_message('Yous pass was revoked!')
+    else
+      ApModule.attendee_message("You don't have a pass!")
     end
     attendee_back(attendee)
   end

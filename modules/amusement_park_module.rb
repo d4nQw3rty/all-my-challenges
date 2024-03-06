@@ -46,4 +46,16 @@ module ApModule
       attendee_message("You don't fit the minimum height")
     end
   end
+
+  def self.allowed_ride(attendee, options)
+    attendee_menu_header(options)
+    Styles.htitle('Enter minimum height for the ride')
+    minimum_height = gets.chomp.to_i
+    attendee_menu_header(options)
+    if attendee.allowed_to_ride?(minimum_height)
+      attendee_message('You Shall Pass!')
+    else
+      attendee_message('You Shall Not Pass')
+    end
+  end
 end

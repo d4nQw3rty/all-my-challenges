@@ -97,17 +97,6 @@ class AmusementParkUi
     attendee_back(attendee)
   end
 
-  def allowed_ride(attendee)
-    ApModule.attendee_menu_header(OPTIONS[:attendee])
-    Styles.htitle('Enter minimun height for the ride')
-    minimum_height = gets.chomp.to_i
-    if attendee.allowed_to_ride?(minimum_height)
-      ApModule.attendee_message('You shall pass!')
-    else
-      ApModule.attendee_message('You shall not pass!')
-    end
-  end
-
   def attendee_back(attendee)
     back = gets
     attendee_menu(attendee) if back

@@ -7,7 +7,10 @@ class AmusementParkUi
   include Styles
   include ApModule
 
-  OPTIONS = { amp: ['Create Attendee'], attendee: ['Height', 'Pass ID', 'Issue Pass!', 'Revoke Pass!', 'Fits Ride?', 'Allowed to ride?'] }
+  OPTIONS = {
+    amp: ['Create Attendee'],
+    attendee: ['Height', 'Pass ID', 'Fits Ride?', 'Allowed to ride?', 'Issue Pass!', 'Revoke Pass!']
+  }
 
   def amusementpark_menu
     ApModule.amp_header(OPTIONS[:amp])
@@ -30,7 +33,7 @@ class AmusementParkUi
     else
       puts 'Insert a valid value, example: 100'
       back = gets
-      create_attendee if back
+      amusementpark_menu if back
     end
   end
 
@@ -42,9 +45,9 @@ class AmusementParkUi
   def attendee_menu(attendee)
     ApModule.attendee_menu_header(OPTIONS[:attendee])
     select = gets.chomp.downcase
-    if %w[1 2 5 6].include?(select)
+    if %w[1 2 3 4].include?(select)
       height_fitride_allowedride_passid(attendee, select)
-    elsif %w[0 3 4].include?(select)
+    elsif %w[0 5 6].include?(select)
       issue_and_revoke(select, attendee)
     else
       attendee_menu(attendee)
@@ -53,32 +56,22 @@ class AmusementParkUi
 
   def height_fitride_allowedride_passid(attendee, select)
     ApModule.attendee_menu_header(OPTIONS[:attendee])
-    if select == '1'
+    case select
+    when '1'
       ApModule.attendee_message("Attendee's height: #{attendee.height}")
-    elsif select == '2'
-      pass_id_report(attendee)
-    elsif select == '5'
-      fit_ride(attendee)
-    else
-      allowed_ride(attendee)
+    when '2', '3', '4'
+      options = %i[pass_id pass_id_report fit_ride allowed_ride]
+      option = options[select.to_i - 1]
+      ApModule.send(option, attendee, OPTIONS[:attendee])
     end
     attendee_back(attendee)
-  end
-
-  def pass_id_report(attendee)
-    ApModule.attendee_menu_header(OPTIONS[:attendee])
-    if attendee.pass_id
-      ApModule.attendee_message("Attendee's Pass ID: #{attendee.pass_id}")
-    else
-      ApModule.attendee_message("You don't have a Pass Id")
-    end
   end
 
   def issue_and_revoke(select, attendee)
     ApModule.attendee_menu_header(OPTIONS[:attendee])
     if select == '0'
-      puts ''
-    elsif select == '3'
+      amusementpark_menu
+    elsif select == '5'
       issue(attendee)
     else
       revoke(attendee)
@@ -104,30 +97,16 @@ class AmusementParkUi
     attendee_back(attendee)
   end
 
-  def fit_ride(attendee)
-    Styles.htitle('Enter minimun height for the ride')
-    minimum_height = gets.chomp.to_i
-    if attendee.fits_ride?(minimum_height)
-      ApModule.attendee_menu_header(OPTIONS[:attendee])
-      ApModule.attendee_message('You fit the minimun height')
-    else
-      ApModule.attendee_menu_header(OPTIONS[:attendee])
-      ApModule.attendee_message("You don't fit the minimun height")   
-    end
-    attendee_back(attendee)
-  end
-
-   def allowed_ride(attendee)
+  def allowed_ride(attendee)
+    ApModule.attendee_menu_header(OPTIONS[:attendee])
     Styles.htitle('Enter minimun height for the ride')
     minimum_height = gets.chomp.to_i
     if attendee.allowed_to_ride?(minimum_height)
-      ApModule.attendee_menu_header(OPTIONS[:attendee])
       ApModule.attendee_message('You shall pass!')
     else
-      ApModule.attendee_menu_header(OPTIONS[:attendee])
       ApModule.attendee_message('You shall not pass!')
     end
-   end
+  end
 
   def attendee_back(attendee)
     back = gets
